@@ -1,0 +1,29 @@
+{
+  "name": "attendance-system",
+  "version": "1.0.0",
+  "description": "Attendance System ",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rojan998/Attendance-F1.git"
+  },
+  "author": "Rojan Adhikari",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rojan998/Attendance-F1/issues"
+  },
+  "homepage": "https://github.com/Rojan998/Attendance-F1#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "mongoose": "^6.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
