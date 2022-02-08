@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   return (
@@ -16,9 +17,9 @@ const Register = () => {
               <label for="password">Password</label>
               <input type="password" id="password" name="password" />
             </form>
-            <a href="/dashboard.html" target="_blank">
+            <Link to="/dashboard" target="_blank">
               Sign Up
-            </a>
+            </Link>
           </div>
         </div>
       </section>

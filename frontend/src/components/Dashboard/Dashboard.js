@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   return (
@@ -13,12 +14,12 @@ const Dashboard = () => {
             <h4>Check Out Time: </h4>
             <h4>Status:(Present, Absent, Missed):</h4>
             <div className="setting">
-              <a href="#">
+              <Link to="#">
                 <i className="fas fa-edit">Edit</i>
-              </a>
-              <a href="#">
+              </Link>
+              <Link to="#">
                 <i className="fas fa-trash-alt">Delete</i>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

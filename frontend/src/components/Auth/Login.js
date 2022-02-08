@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -16,21 +17,21 @@ const Login = () => {
               <label for="password">Password</label>
               <input type="password" id="password" name="password" />
             </form>
-            <a href="/dashboard.html" target="_blank">
+            <Link to="/dashboard" target="_blank">
               Sign In
-            </a>
+            </Link>
             <span>
               Create Account here,{" "}
-              <a href="/register.html" target="_blank" className="a_no_css">
+              <Link to="/register" target="_blank" className="a_no_css">
                 Sign Up
-              </a>
+              </Link>
             </span>
           </div>
 
           <div className="submit_form">
-            <a href="/submitAttendance.html" target="_blank">
+            <Link to="/submitattendance" target="_blank">
               Submit Attendance
-            </a>
+            </Link>
           </div>
         </div>
       </section>

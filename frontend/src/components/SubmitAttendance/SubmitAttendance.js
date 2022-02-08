@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SubmitAttendance = () => {
   return (
@@ -26,7 +27,6 @@ const SubmitAttendance = () => {
                 <label for="check-out">Check Out</label>
               </div>
 
-              <label for="remarks">Remarks</label>
               <h3>Remarks</h3>
               <textarea
                 name="remarks"
@@ -35,7 +35,9 @@ const SubmitAttendance = () => {
                 rows="2s"
               ></textarea>
             </form>
-            <a href="#">Submit Form</a>
+            <Link to="/dashboard" target="_blank">
+              Submit Form
+            </Link>
           </div>
         </div>
       </section>
