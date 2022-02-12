@@ -1,14 +1,15 @@
 import "./App.css";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Login from "./components/Auth/Login";
-import Register from "./components/Auth/Register";
-import Dashboard from "./components/Dashboard/Dashboard";
-import SubmitAttendance from "./components/SubmitAttendance/SubmitAttendance";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Dashboard from "./components/Dashboard";
+import SubmitAttendance from "./components/SubmitAttendance";
+import { AttendanceProvider } from "./Context/attendanceContext";
 
 function App() {
   return (
-    <>
+    <AttendanceProvider>
       <Router>
         <Route exact path="/" component={Login} />
 
@@ -18,7 +19,7 @@ function App() {
           <Route exact path="/submitattendance" component={SubmitAttendance} />
         </Switch>
       </Router>
-    </>
+    </AttendanceProvider>
   );
 }
 
