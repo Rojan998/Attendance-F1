@@ -1,51 +1,60 @@
-import React, { useContext } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { AttendanceContext } from "../../Context/attendanceContext";
+import CardComponent from "../CardComponent";
 
 const DashboardLayout = () => {
-  const [formData, setFormData] = useContext(AttendanceContext);
-  const { username, password } = formData;
+  const [datas, setDatas] = useState([]);
 
   const logoutHandler = () => {
     localStorage.clear();
     window.location.href = "/";
   };
 
-  // Time
-  // var date = new Date();
+  const loadDataFromDB = async () => {
+    const retriveTokenFromLS = localStorage.getItem("userInfo");
+    const strToken = JSON.parse(retriveTokenFromLS);
+    console.log(strToken.token);
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          "x-auth-token": strToken.token,
+        },
+      };
 
-  // var hour = date.getHours();
-  // var min = date.getMinutes();
-  // console.log(hour + ":" + min);
+      const dataJson = await axios.get("/api/dashboard", config);
+      const datas = await Object.values(dataJson).splice(0, 1);
 
-  // Date:
+      console.log("This is data", datas);
 
-  // var today = new Date();
-  // var dd = String(today.getDate()).padStart(2, "0");
-  // var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-  // var yyyy = today.getFullYear();
+      setDatas(datas);
+    } catch (error) {
+      // alert(error);
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    loadDataFromDB();
+  }, []);
 
-  // today = mm + "/" + dd + "/" + yyyy;
   return (
     <>
       <h1>Welcome to Dashboard</h1>
+
       <section>
-        <h2>Welcome {username}</h2>
+        <h2>
+          Welcome:
+          {datas.map((data) => {
+            return data.username;
+          })}
+        </h2>
+
         <div className="container">
-          <div className="card">
-            <h4>Date: </h4>
-            <h4>Check In Time: </h4>
-            <h4>Check Out Time: </h4>
-            <h4>Status:(Present, Absent, Missed):</h4>
-            <div className="setting">
-              <Link to="#">
-                <i className="fas fa-edit">Edit</i>
-              </Link>
-              <Link to="#">
-                <i className="fas fa-trash-alt">Delete</i>
-              </Link>
-            </div>
-          </div>
+          {datas.map((data) => {
+            return <CardComponent {...data} key={data.id} />;
+          })}
+
           <Link className="btn btn-center" onClick={logoutHandler}>
             Log Out
           </Link>

@@ -65,9 +65,10 @@ const SubmitAttendanceLayout = () => {
       const getUserInfo = localStorage.getItem("userInfo");
       if (getUserInfo) {
         alert("Your data has been pushed in the database");
-        // clearData();
+        clearData();
       }
     } catch (error) {
+      alert(error);
       console.error(error);
     }
   };

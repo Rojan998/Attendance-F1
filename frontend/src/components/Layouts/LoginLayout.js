@@ -39,9 +39,11 @@ const LoginLayout = () => {
       localStorage.setItem("userInfo", JSON.stringify(data));
       const getUserInfo = localStorage.getItem("userInfo");
       if (getUserInfo) {
-        // window.location.href = "/Dashboard";
+        alert("User logged in successfully, now going to dashboard page");
+        window.location.href = "/Dashboard";
       }
     } catch (error) {
+      alert(error);
       console.error(error);
     }
   };

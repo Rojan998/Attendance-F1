@@ -36,20 +36,16 @@ const RegisterLayout = () => {
         const getUserInfo = localStorage.getItem("userInfo");
         if (getUserInfo) {
           console.log(getUserInfo);
-          // window.location.href = "/Dashboard";
+          alert("User Registered, going to dashboard");
+          window.location.href = "/Dashboard";
         }
       } catch (error) {
+        alert(error);
         console.error(error.response.data);
       }
     }
   };
 
-  // const getUserInfo = localStorage.getItem("userInfo");
-  // const onClickHandler = () => {
-  //   if (getUserInfo) {
-  //     <Route path="/Dashboard" component={Dashboard} />;
-  //   }
-  // };
   return (
     <>
       <h1> Welcome to Register Page</h1>
