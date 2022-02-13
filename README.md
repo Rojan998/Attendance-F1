@@ -117,7 +117,7 @@ The routes are :
 
 #### Working in Edit and Delete functionality.
 
-## Authors
+## Author
 
 - [@rojan998](https://www.github.com/rojan998)
 
