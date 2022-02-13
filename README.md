@@ -97,6 +97,16 @@ The routes are :
 
 4. You can also EDIT and DELETE the datas.
 
+# Screenshots
+
+<div align="center">
+        <img width="45%" src="screenshots/dashboard.png" alt="Dashboard" title="DashBoards"></img>
+        <img height="0" width="8px">
+        <img width="45%" src="screenshots/submitattendance.PNG" alt="Submit Attendance Screen" title="Submit Attendance Screen"></img>
+        <img height="0" width="8px">
+        <img width="45%" src="screenshots/dashboard.PNG" alt="Submit Attendance Screen" title="Submit Attendance Screen"></img>
+</div>
+
 # Notes:
 
 #### Firstly note that this is not complete app. I am working in it, and there might be some issues.

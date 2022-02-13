@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CardComponent = ({ checkin, checkout, date }) => {
+const CardComponent = ({ checkin, checkout, date, key }) => {
   return (
     <>
-      <div className="card">
+      <div className="card" key={key}>
         <h4>Date: {date} </h4>
         <h4>Check In Time: {checkin} </h4>
         <h4>Check Out Time: {checkout}</h4>
@@ -17,7 +17,7 @@ const CardComponent = ({ checkin, checkout, date }) => {
             : "Absent"}
         </h4>
         <div className="setting">
-          <Link to="#">
+          <Link to="/update">
             <i className="fas fa-edit">Edit</i>
           </Link>
           <Link to="#">

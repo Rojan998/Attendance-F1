@@ -6,6 +6,7 @@ import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
 import SubmitAttendance from "./components/SubmitAttendance";
 import { AttendanceProvider } from "./Context/attendanceContext";
+import Update from "./components/Update";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route exact path="/register" component={Register} />
           <Route exact path="/Dashboard" component={Dashboard} />
           <Route exact path="/submitattendance" component={SubmitAttendance} />
+          <Route exact path="/update" component={Update} />
         </Switch>
       </Router>
     </AttendanceProvider>
