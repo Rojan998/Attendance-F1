@@ -17,9 +17,9 @@ B. User can submit their Attendance, Has checkin and checkout section.
 
 C. All the data are stored in the MongoDb Database.
 
-D. Private routes (incomplete).
+D. Private routes.
 
-E. Dashboard Section (incomplete).
+E. Dashboard Section.
 
 # Dependecies:
 
@@ -39,7 +39,7 @@ f. react-datepicker
 
 g. dotenv
 
-h. concurrently a dev dependency
+h. concurrently as dev dependency
 
 i. express-validator
 
@@ -81,11 +81,11 @@ The routes are :
 
 `localhost:3000` => Login page
 
-`localhost:3000/register` => Register Page
-
-`localhost:3000/Dashboard` => Dashboard Page
+`localhost:3000/Dashboard` => Dashboard Page (Private Route)
 
 `localhost:3000/submitattendance` => Submit Attendance Page
+
+`localhost:3000/update` => Update Page (Private Route, incomplete)
 
 # Working Process
 
@@ -115,7 +115,7 @@ The routes are :
 
 #### I have experimented with POSTMAN for backend testing.
 
-#### Working in Edit and Delete functionality.
+#### Working in Edit functionality.
 
 ## Author
 

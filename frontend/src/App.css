@@ -108,18 +108,10 @@ textarea {
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-  /* zoom: 2;
-  transform: scale(0.9); */
+
 }
 
-/* label {
-  padding-left: 5px;
-  cursor: pointer;
-  margin-right: 1rem;
-} */
-/* label input[type="checkbox"] {
-  padding: 1rem;
-} */
+
 
 .setting {
   display: flex;
@@ -128,9 +120,3 @@ textarea {
   gap: 2rem;
 }
 
-/* .submit_form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-} */

@@ -1,7 +1,36 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const CardComponent = ({ checkin, checkout, date, key }) => {
+  // Delete User
+  const deleteUser = async () => {
+    let retriveTokenFromLS = localStorage.getItem("userInfo");
+
+    const strToken = JSON.parse(retriveTokenFromLS);
+    console.log(strToken.token);
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          "x-auth-token": strToken.token,
+        },
+      };
+
+      axios.delete("/api/delete", config);
+      let retriveTokenFromLS = localStorage.clear();
+      alert(
+        "Your data has been deleted. Now you are redirecting to LOGIN PAGE"
+      );
+      if (!retriveTokenFromLS) {
+        alert("There is no token and you are not authorized");
+        window.location.href = "/";
+      }
+    } catch (error) {
+      alert(error);
+      console.error(error);
+    }
+  };
   return (
     <>
       <div className="card" key={key}>
@@ -20,9 +49,9 @@ const CardComponent = ({ checkin, checkout, date, key }) => {
           <Link to="/update">
             <i className="fas fa-edit">Edit</i>
           </Link>
-          <Link to="#">
+          <button className="btn" onClick={deleteUser}>
             <i className="fas fa-trash-alt">Delete</i>
-          </Link>
+          </button>
         </div>
       </div>
     </>

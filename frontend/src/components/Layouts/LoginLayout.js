@@ -82,12 +82,12 @@ const LoginLayout = () => {
               />
               <input type="submit" className="btn btn-center" value="Login" />
             </form>
-            <span>
+            {/* <span>
               Create Account here,{" "}
               <Link to="/register" target="_blank" className="a_no_css">
                 Sign Up
               </Link>
-            </span>
+            </span> */}
           </div>
 
           <div className="submit_form">

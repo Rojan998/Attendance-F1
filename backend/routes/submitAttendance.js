@@ -30,8 +30,6 @@ router.get("/", auth, async (req, res) => {
 const checkValidations = [
   check("username", "Name is required").not().isEmpty(),
   check("password", "Password is required").exists(),
-  // check("checkin", "Please Choose the CheckIn  Time").exists(),
-  // check("checkout", "Please Choose the CheckOut  Time").exists(),
 ];
 
 router.post("/", checkValidations, async (req, res) => {
@@ -45,6 +43,12 @@ router.post("/", checkValidations, async (req, res) => {
   try {
     let user = await SubmitAttendance.findOne({ username });
     let userDatabse = await User.findOne({ username });
+
+    if (user && userDatabse) {
+      return res
+        .status(400)
+        .json({ errors: [{ message: "USer Already Exists" }] });
+    }
 
     user = new SubmitAttendance({
       username,
@@ -61,7 +65,6 @@ router.post("/", checkValidations, async (req, res) => {
 
     await user.save();
     await userDatabse.save();
-    // res.status(200).json(user);
 
     const payload = {
       user: {

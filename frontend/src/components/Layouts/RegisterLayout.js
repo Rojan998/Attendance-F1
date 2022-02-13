@@ -15,8 +15,6 @@ const RegisterLayout = () => {
     if (password.length < 6) {
       console.log("Password Length must be greater than 6");
     } else {
-      // console.log(formData);
-
       const newUser = {
         username,
         password,
@@ -36,8 +34,8 @@ const RegisterLayout = () => {
         const getUserInfo = localStorage.getItem("userInfo");
         if (getUserInfo) {
           console.log(getUserInfo);
-          alert("User Registered, going to dashboard");
-          window.location.href = "/Dashboard";
+          alert("User Registered, Now go on to submit your attendance");
+          window.location.href = "/submitattendance";
         }
       } catch (error) {
         alert(error);

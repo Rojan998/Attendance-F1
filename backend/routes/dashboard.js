@@ -3,7 +3,6 @@ const router = express.Router();
 
 const auth = require("../middleware/auth");
 const SubmitAttendance = require("../Models/SubmitAttendance");
-const User = require("../Models/User");
 
 const { check, validationResult } = require("express-validator");
 
@@ -27,21 +26,4 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
-// @route    GET api/dashboard
-// @desc     Get all profiles
-// @access   Public
-// router.get("/", async (req, res) => {
-//   try {
-//     const profiles = await SubmitAttendance.find().populate("user", [
-//       "name",
-//       "checkin",
-//       "checkout",
-//       "date",
-//     ]);
-//     res.json(profiles);
-//   } catch (err) {
-//     console.error(err.message);
-//     res.status(500).send("Server Error");
-//   }
-// });
 module.exports = router;

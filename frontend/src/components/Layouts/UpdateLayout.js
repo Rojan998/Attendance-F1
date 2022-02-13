@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { AttendanceContext } from "../../Context/attendanceContext";
 import axios from "axios";
 // Date Picker
@@ -12,20 +12,54 @@ const UpdateLayout = () => {
   const [formData, setFormData] = useContext(AttendanceContext);
 
   const { username, password, remarks } = formData;
+
+  // setDatas
+  const [datas, setDatas] = useState([]);
+
   const [time, setTime] = useContext(AttendanceContext);
-  const { checkin, checkout } = time;
+  // const { checkin, checkout } = time;
 
   const [startDate, setStartDate] = useState(new Date());
 
+  // GET THE DATA FROM THE BACKEND MONGODB AND SHOW IT IN THE LAYOUT. (EDITING THE FORM DATA)
+  const loadDataFromDB = async () => {
+    const retriveTokenFromLS = localStorage.getItem("userInfo");
+    if (!retriveTokenFromLS) {
+      alert("There is no token and you are not authorized");
+      window.location.href = "/";
+    }
+    const strToken = JSON.parse(retriveTokenFromLS);
+    console.log(strToken.token);
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          "x-auth-token": strToken.token,
+        },
+      };
+
+      const dataJson = await axios.get("/api/update", config);
+      const datas = await Object.values(dataJson).splice(0, 1);
+
+      // const datas = await JSON.stringify(dataJson);
+
+      console.log("This is data", datas);
+
+      setDatas(datas);
+    } catch (error) {
+      // alert(error);
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    loadDataFromDB();
+  }, []);
+
   const onChangeHandler = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setDatas({ ...datas, [e.target.name]: e.target.value });
   };
 
-  const clearData = () => {
-    window.location.href = "/";
-    localStorage.clear();
-  };
-
+  // Updating the form data
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     if (password.length < 6) {
@@ -33,32 +67,23 @@ const UpdateLayout = () => {
     } else {
       console.log(formData);
     }
+
+    const retriveTokenFromLS = localStorage.getItem("userInfo");
+
+    const strToken = JSON.parse(retriveTokenFromLS);
+    console.log(strToken.token);
     try {
       const config = {
         headers: {
           "Content-Type": "application/json",
+          "x-auth-token": strToken.token,
         },
       };
 
-      const { data } = await axios.post(
-        "/api/submitattendance",
-        {
-          username,
-          password,
-          checkin,
-          checkout,
-          remarks,
-        },
-        config
-      );
-      console.log("this is data", data);
-      console.log("this is data.token", data.token);
-      localStorage.setItem("userInfo", JSON.stringify(data));
-      const getUserInfo = localStorage.getItem("userInfo");
-      if (getUserInfo) {
-        alert("Your data has been pushed in the database");
-        clearData();
-      }
+      const dataJson = await axios.post("/api/update", config);
+      const datas = await Object.values(dataJson).splice(0, 1);
+
+      setFormData(datas);
     } catch (error) {
       alert(error);
       console.error(error);
@@ -67,7 +92,7 @@ const UpdateLayout = () => {
 
   return (
     <>
-      <h1>Update Page</h1>
+      <h1>Update Attendance Page</h1>
 
       <section>
         <div className="container">
@@ -81,9 +106,12 @@ const UpdateLayout = () => {
                 id="username"
                 name="username"
                 required
-                value={username}
+                value={datas.map((name) => name.username)}
                 onChange={onChangeHandler}
               />
+              {datas.map((name) => {
+                return <>{name.username}</>;
+              })}
               <br />
               <label for="password">Password</label>
               <input
@@ -92,7 +120,7 @@ const UpdateLayout = () => {
                 name="password"
                 minLength="6"
                 required
-                value={password}
+                value={datas.map((password) => password.password)}
                 onChange={onChangeHandler}
               />
               <br />
@@ -113,14 +141,14 @@ const UpdateLayout = () => {
 
                 <TimePicker
                   onChange={(checkin) => setTime({ ...time, checkin })}
-                  value={checkin}
+                  value={datas.map((checkin) => checkin.checkin)}
                 />
 
                 <label for="check-out">Check Out Time</label>
 
                 <TimePicker
                   onChange={(checkout) => setTime({ ...time, checkout })}
-                  value={checkout}
+                  value={datas.map((checkout) => checkout.checkout)}
                 />
               </div>
 
@@ -130,7 +158,7 @@ const UpdateLayout = () => {
                 id="remarks"
                 cols="15"
                 rows="2s"
-                value={remarks}
+                value={datas.map((remakrs) => remakrs.remarks)}
                 onChange={onChangeHandler}
               ></textarea>
               <input

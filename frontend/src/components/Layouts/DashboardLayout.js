@@ -13,6 +13,11 @@ const DashboardLayout = () => {
 
   const loadDataFromDB = async () => {
     const retriveTokenFromLS = localStorage.getItem("userInfo");
+    if (!retriveTokenFromLS) {
+      alert("There is no token and you are not authorized");
+      window.location.href = "/";
+    }
+
     const strToken = JSON.parse(retriveTokenFromLS);
     console.log(strToken.token);
     try {

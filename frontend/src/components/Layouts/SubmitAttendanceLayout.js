@@ -22,8 +22,8 @@ const SubmitAttendanceLayout = () => {
   };
 
   const clearData = () => {
-    window.location.href = "/";
     localStorage.clear();
+    window.location.href = "/";
   };
 
   const onSubmitHandler = async (e) => {
@@ -51,8 +51,8 @@ const SubmitAttendanceLayout = () => {
         },
         config
       );
-      console.log("this is data", data);
-      console.log("this is data.token", data.token);
+      // console.log("this is data", data);
+      // console.log("this is data.token", data.token);
       localStorage.setItem("userInfo", JSON.stringify(data));
       const getUserInfo = localStorage.getItem("userInfo");
       if (getUserInfo) {
