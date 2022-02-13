@@ -15,14 +15,6 @@ const SubmitAttendanceLayout = () => {
   const [time, setTime] = useContext(AttendanceContext);
   const { checkin, checkout } = time;
 
-  // this is working code
-  // const changeCheckinTime = (checkin) => {
-  //   setTime({ ...time, checkin });
-  // };
-  // const changeCheckoutTime = (checkout) => {
-  //   setTime({ ...time, checkout });
-  // };
-
   const [startDate, setStartDate] = useState(new Date());
 
   const onChangeHandler = (e) => {
@@ -30,7 +22,7 @@ const SubmitAttendanceLayout = () => {
   };
 
   const clearData = () => {
-    window.location.href = "./submitattendance";
+    window.location.href = "/";
     localStorage.clear();
   };
 

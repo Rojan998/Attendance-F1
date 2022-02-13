@@ -3,7 +3,7 @@ const router = express.Router();
 
 const auth = require("../middleware/auth");
 const SubmitAttendance = require("../Models/SubmitAttendance");
-// const User = require("../Models/User");
+const User = require("../Models/User");
 const jwt = require("jsonwebtoken");
 
 const { check, validationResult } = require("express-validator");
@@ -30,8 +30,8 @@ router.get("/", auth, async (req, res) => {
 const checkValidations = [
   check("username", "Name is required").not().isEmpty(),
   check("password", "Password is required").exists(),
-  check("checkin", "Please Choose the CheckIn  Time").exists(),
-  check("checkout", "Please Choose the CheckOut  Time").exists(),
+  // check("checkin", "Please Choose the CheckIn  Time").exists(),
+  // check("checkout", "Please Choose the CheckOut  Time").exists(),
 ];
 
 router.post("/", checkValidations, async (req, res) => {
@@ -44,11 +44,8 @@ router.post("/", checkValidations, async (req, res) => {
 
   try {
     let user = await SubmitAttendance.findOne({ username });
-    // if (user) {
-    //   return res
-    //     .status(400)
-    //     .json({ errors: [{ message: "USer DATA Already Exists" }] });
-    // }
+    let userDatabse = await User.findOne({ username });
+
     user = new SubmitAttendance({
       username,
       password,
@@ -56,7 +53,14 @@ router.post("/", checkValidations, async (req, res) => {
       checkout,
       remarks,
     });
+
+    userDatabse = new User({
+      username,
+      password,
+    });
+
     await user.save();
+    await userDatabse.save();
     // res.status(200).json(user);
 
     const payload = {

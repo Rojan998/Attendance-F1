@@ -87,6 +87,16 @@ In the root directory make `.env` file and paste
 
 Now you are ready to go.
 
+# Working Process
+
+1. Login page is our landing page, which has `login form` and button to `submit attendance`
+
+2. Firslty click on `submit attedance` button and then new page redirects to `/submitattendance` page, where user can fill the form with necessary details and can submit the form. Thus submited form is also pushed in the mongodb database. Once clicking in the `submit form` button, user is redirected to the login page.
+
+3. Login with your credentials used in `submit attendance` form. You will be redirect to the `/dashboard` page, where user can see the filled in details and check whether they are `Present, Absent or Missed`.
+
+4. You can also EDIT and DELETE the datas.
+
 # Notes:
 
 #### Firstly note that this is not complete app. I am working in it, and there might be some issues.
@@ -95,7 +105,7 @@ Now you are ready to go.
 
 #### I have experimented with POSTMAN for backend testing.
 
-#### The database functionality works in POSTMAN and I am working in the frontend i.e. in `localhost:3000/dashboard` to show it
+#### Working in Edit and Delete functionality.
 
 ## Authors
 

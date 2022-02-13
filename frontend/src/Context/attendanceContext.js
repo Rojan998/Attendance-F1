@@ -11,8 +11,8 @@ export const AttendanceProvider = (props) => {
   });
   // For Checkin and Checkout time
   const [time, setTime] = useState({
-    checkin: "00:00",
-    checkout: "00:00",
+    checkin: "",
+    checkout: "",
   });
 
   return (

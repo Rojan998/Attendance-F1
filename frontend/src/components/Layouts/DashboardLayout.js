@@ -26,7 +26,7 @@ const DashboardLayout = () => {
       const dataJson = await axios.get("/api/dashboard", config);
       const datas = await Object.values(dataJson).splice(0, 1);
 
-      console.log("This is data", datas);
+      // console.log("This is data", datas);
 
       setDatas(datas);
     } catch (error) {

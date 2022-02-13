@@ -19,12 +19,11 @@ const SubmitAttendanceSchema = new mongoose.Schema({
   checkin: {
     type: String,
     default: false,
-    required: true,
   },
+
   checkout: {
     type: String,
     default: false,
-    required: true,
   },
   remarks: {
     type: String,
