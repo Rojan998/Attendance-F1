@@ -100,7 +100,7 @@ The routes are :
 # Screenshots
 
 <div align="center">
-        <img width="45%" src="screenshots/dashboard.png" alt="Dashboard" title="DashBoards"></img>
+        <img width="45%" src="screenshots/login.png" alt="Dashboard" title="DashBoards"></img>
         <img height="0" width="8px">
         <img width="45%" src="screenshots/submitattendance.png" alt="Submit Attendance Screen" title="Submit Attendance Screen"></img>
         <img height="0" width="8px">
