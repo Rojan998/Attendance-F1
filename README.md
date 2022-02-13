@@ -53,11 +53,25 @@ m. JWT
 
 # Run:
 
+## Connect to MongoDb Database and stuffs
+
+In the root directory make `.env` file and paste
+
+`NODE_ENV = development`
+
+`PORT = 5000`
+
+`MONGO_URI = Your mongoURI`
+
+`jwtSecret = mysecrettoken`
+
+Now you are ready to go to run the project.
+
 ## Steps:
 
 1. Clone the github repository.
 2. Install node_modules in the root directory using `npm i `
-3. Move to frontend folder and again install npm using step 2.
+3. Move to frontend folder and again install node_modules using step 2.
 4. In the root directory, type `npm run dev` which will open up the browser
 
 # Playing with the project.
@@ -72,20 +86,6 @@ The routes are :
 `localhost:3000/Dashboard` => Dashboard Page
 
 `localhost:3000/submitattendance` => Submit Attendance Page
-
-# Connect to MongoDb Database and stuffs
-
-In the root directory make `.env` file and paste
-
-`NODE_ENV = development`
-
-`PORT = 5000`
-
-`MONGO_URI = Your mongoURI`
-
-`jwtSecret = mysecrettoken`
-
-Now you are ready to go.
 
 # Working Process
 
